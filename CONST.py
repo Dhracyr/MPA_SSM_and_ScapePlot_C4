@@ -1,8 +1,16 @@
 import os
 import librosa
+import numpy as np
 
-def calculate_ann(x, Fs):
+def calculate_ann(x, Fs, n_anns=5):
     x_duration = (x.shape[0])/Fs
+    borders = np.linspace(0.0, x_duration, n_anns)
+    start_points = borders[:-1]
+    end_points = borders[1:]
+    ann = []
+    for start_point, end_point in zip(start_points,end_points):
+        ann.append((start_point,end_point,"X"))
+
     return [(0.0, x_duration, "X")], None, x_duration
 
 def get_wav(Fs, name='01 Main Theme (Aberration).wav'):
