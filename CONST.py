@@ -4,7 +4,7 @@ import numpy as np
 
 def calculate_ann(x, Fs, n_anns=5):
     x_duration = (x.shape[0])/Fs
-    borders = np.linspace(0.0, x_duration, n_anns)
+    borders = np.linspace(0.0, x_duration, n_anns+1)
     start_points = borders[:-1]
     end_points = borders[1:]
     ann = []
